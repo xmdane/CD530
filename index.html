@@ -1,0 +1,212 @@
+<!-- Finished On 2020.12.15 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0027)http://itzoo.info/love.html -->
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>D Love C</title>
+        <link rel="shortcut icon"  type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="./Love_files/default.css">
+        <script type="text/javascript" src="./Love_files/jquery.min.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex.min.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex-parser.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex-jit.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex-builderbase.min.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex-async.min.js"></script>
+        <script type="text/javascript" src="./Love_files/jscex-async-powerpack.min.js"></script>
+        <script type="text/javascript" src="./Love_files/functions.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./Love_files/love.js" charset="utf-8"></script>
+
+    </head>
+    <body>
+        <div id="main">
+            <div id="error">亲，您使用的浏览器无法支持即将显示的内容，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器哟~</div>
+            <div id="divider"></div>
+            <div id="wrap">
+               <div id="text">
+                    <div id="code">
+                    <span class="say">亲爱的SISI，我会牵着你的手，走到满头白发的那一天👩‍🦳👨‍🦳</span><br>
+                    <span class="say">我会守护你生命里的精彩，并陪伴你一路精彩下去🍁</span><br>
+                    <span class="say">我要你幸福和快乐，也要我们一起好好的生活🍷</span><br>
+                    <span class="say">每天早晨离家的时候，为你制作一份温暖的咖啡，😘你</span><br>
+                    <span class="say">并把它装进😘爱的保温杯里</span><br>
+                    <span class="say">陪你看剧😠看你哭和笑😊</span><br>
+                    <span class="say">一起经历生活的阳光☀🌞和风雨🌧️</span><br>
+                    <span class="say">我期待这一生与你一起走过🚶</span><br>
+                    <span class="say">我期待与你慢慢变老👴</span><br>
+                    <span class="say">等我们老到哪儿也去不了🏠</span><br>
+                    <span class="say">还能像现在一样的幸福快乐🥰！</span><br>
+                    <br>
+                    <span class="say">我想和你一起,为我们的未来加油努力💪</span><br>
+                      <span class="say">愿意去做每一件能让你开心快乐的事😄</span><br>
+                       <span class="say">我们经历的点点滴滴💧</span><br>
+                        <span class="say">都将是我们一辈子最美好的记忆📷</span><br>
+                         <span class="say">我会一直爱你💗</span><br>
+                   <br>
+                    <span class="say"><span class="space"></span> -- Yours, Dane@530</span>
+                    </div>
+                </div>
+                <div id="clock-box">
+                    <span>Dane and Cathy 已经在一起并相爱了：</span>
+                        <div id="clock"></div>
+                </div>
+                <canvas id="canvas" width="100%" height="1314px"></canvas>
+            </div>
+            <audio id="bgm" src="./love.mp3" width=170 height=25 loop="true" autostart="true"></audio>
+        </div>
+
+    <script>
+    (function(){
+        var canvas = $('#canvas');
+
+        if (!canvas[0].getContext) {
+            $("#error").show();
+            return false;
+        }
+
+        var width = canvas.width();
+        var height = canvas.height();
+
+        canvas.attr("width", width);
+        canvas.attr("height", height);
+
+        var opts = {
+            seed: {
+                x: width / 2 - 20,
+                color: "rgb(190, 26, 37)",
+                scale: 2
+            },
+            branch: [
+                [535, 1314, 570, 790, 500, 200, 60, 150, [
+                    [540, 670, 455, 417, 340, 400, 15, 100, [
+                        [450, 435, 434, 430, 394, 395, 8, 40]
+                    ]],
+                    [550, 990, 600, 710, 580, 345, 14, 100, [
+                        [578, 800, 648, 600, 661, 426, 6, 80]
+                    ]],
+                    [539, 540, 537, 310, 534, 217, 10, 100],
+                    [546, 790, 413, 400, 328, 244, 12, 80, [
+                        [427, 500, 383, 319, 371, 205, 6, 40],
+                        [505, 690, 435, 429, 395, 330, 8, 60]
+                    ]],
+                    [546, 708, 608, 423, 678, 221, 10, 100, [
+                        [590, 586, 646, 340, 648, 271, 8, 80]
+                    ]]
+                ]]
+            ],
+            bloom: {
+                num: 1314,
+                width: 1080,
+                height: 650,
+            },
+            footer: {
+                width: 1200,
+                height: 5,
+                speed: 10,
+            }
+        }
+
+        var tree = new Tree(canvas[0], width, height, opts);
+        var seed = tree.seed;
+        var foot = tree.footer;
+        var hold = 1;
+
+        canvas.click(function(e) {
+            document.getElementById("bgm").play()
+            var offset = canvas.offset(), x, y;
+            x = e.pageX - offset.left;
+            y = e.pageY - offset.top;
+            if (seed.hover(x, y)) {
+                hold = 0;
+                canvas.unbind("click");
+                canvas.unbind("mousemove");
+                canvas.removeClass('hand');
+            }
+        }).mousemove(function(e){
+            var offset = canvas.offset(), x, y;
+            x = e.pageX - offset.left;
+            y = e.pageY - offset.top;
+            canvas.toggleClass('hand', seed.hover(x, y));
+        });
+
+        var seedAnimate = eval(Jscex.compile("async", function () {
+            seed.draw();
+            while (hold) {
+                $await(Jscex.Async.sleep(10));
+            }
+            while (seed.canScale()) {
+                seed.scale(0.95);
+                $await(Jscex.Async.sleep(10));
+            }
+            while (seed.canMove()) {
+                seed.move(0, 7);
+                foot.draw();
+                $await(Jscex.Async.sleep(10));
+            }
+        }));
+
+        var growAnimate = eval(Jscex.compile("async", function () {
+            do {
+                tree.grow();
+                $await(Jscex.Async.sleep(10));
+            } while (tree.canGrow());
+        }));
+
+        var flowAnimate = eval(Jscex.compile("async", function () {
+            do {
+                tree.flower(2);
+                $await(Jscex.Async.sleep(10));
+            } while (tree.canFlower());
+        }));
+
+        var moveAnimate = eval(Jscex.compile("async", function () {
+            tree.snapshot("p1", 100, 0, 1080, 1314);
+            while (tree.move("p1", 500, 0)) {
+                foot.draw();
+                $await(Jscex.Async.sleep(10));
+            }
+            foot.draw();
+            tree.snapshot("p2", 500, 0, 610, 680);
+
+            // 会有闪烁不得以这样做, (＞﹏＜)
+            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+            canvas.css("background", "#ffe");
+            $await(Jscex.Async.sleep(300));
+            canvas.css("background", "none");
+        }));
+
+        var jumpAnimate = eval(Jscex.compile("async", function () {
+            var ctx = tree.ctx;
+            while (true) {
+                tree.ctx.clearRect(0, 0, width, height);
+                tree.jump();
+                foot.draw();
+                $await(Jscex.Async.sleep(25));
+            }
+        }));
+
+        var textAnimate = eval(Jscex.compile("async", function () {
+            var together = new Date('May 30, 2011 00:00:00')
+
+            $("#code").show().typewriter();
+            $("#clock-box").fadeIn(500);
+            while (true) {
+                timeElapse(together);
+                $await(Jscex.Async.sleep(1000));
+            }
+        }));
+
+        var runAsync = eval(Jscex.compile("async", function () {
+            $await(seedAnimate());
+            $await(growAnimate());
+            $await(flowAnimate());
+            $await(moveAnimate());
+
+            textAnimate().start();
+
+            $await(jumpAnimate());
+        }));
+
+        runAsync().start();
+    })();
+    </script>
+</body>
+</html>
